@@ -15,9 +15,9 @@ private:
 	vector<Node> ArrPoint;
 public:
 	BinaryTree(t element) {
-		Node newpoint; //создать элемент в дереве (самый первый, как корень дерева)
-		newpoint.value = element; //записать в элемент значение
-		ArrPoint.push_back(newpoint); //записать в массив (в душе не ебу, зачем, пока что, но Никита сказал, что надо)
+		Node newpoint; //Е„Г®Г§Г¤Е•Е€Гј ГЅГ«ДєД›ДєГ­Е€ Гў Г¤ДєД‘ДєГўДє (Е„Е•Д›Е±Г© ДЏДєД‘ГўЕ±Г©, Д™Е•Д™ Д™Г®Д‘ДєГ­Гј Г¤ДєД‘ДєГўЕ•)
+		newpoint.value = element; //Г§Е•ДЏДЌЕ„Е•Е€Гј Гў ГЅГ«ДєД›ДєГ­Е€ Г§Г­Е•Г·ДєГ­ДЌДє
+		ArrPoint.push_back(newpoint);
 	}
 
 	void Print()
@@ -43,11 +43,11 @@ public:
 		Node newpoint;
 		newpoint.value = element;
 
-		bool addelem = false; //пока на место не взойдет
+		bool addelem = false; //ДЏГ®Д™Е• Г­Е• Д›ДєЕ„Е€Г® Г­Дє ГўГ§Г®Г©Г¤ДєЕ€
 		int i = 0;
 		while (!addelem)
 		{
-			if (newpoint.value < ArrPoint[i].value) //если элемент меньше и левого потомка нет, то это левый потомок, иначе перейти к левому потомку и с ним работать
+			if (newpoint.value < ArrPoint[i].value) //ДєЕ„Г«ДЌ ГЅГ«ДєД›ДєГ­Е€ Д›ДєГ­ГјЕ™Дє ДЌ Г«ДєГўГ®ДѓГ® ДЏГ®Е€Г®Д›Д™Е• Г­ДєЕ€, Е€Г® ГЅЕ€Г® Г«ДєГўЕ±Г© ДЏГ®Е€Г®Д›Г®Д™, ДЌГ­Е•Г·Дє ДЏДєД‘ДєГ©Е€ДЌ Д™ Г«ДєГўГ®Д›Гі ДЏГ®Е€Г®Д›Д™Гі ДЌ Е„ Г­ДЌД› Д‘Е•ГЎГ®Е€Е•Е€Гј
 			{
 				if (ArrPoint[i].left == -1)
 				{
@@ -77,17 +77,17 @@ public:
 	void Delete(t value)
 	{
 		int i = this->Search(value);
-		if (i != -1) //если элемент существует
+		if (i != -1) //ДєЕ„Г«ДЌ ГЅГ«ДєД›ДєГ­Е€ Е„ГіЕЇДєЕ„Е€ГўГіДєЕ€
 		{
 			cout << "Delete "<< ArrPoint[i].value << endl;
-			if (ArrPoint[i].left == -1 && ArrPoint[i].right == -1) //если у узла нет потомков, то просто удалить
+			if (ArrPoint[i].left == -1 && ArrPoint[i].right == -1) //ДєЕ„Г«ДЌ Гі ГіГ§Г«Е• Г­ДєЕ€ ДЏГ®Е€Г®Д›Д™Г®Гў, Е€Г® ДЏД‘Г®Е„Е€Г® ГіГ¤Е•Г«ДЌЕ€Гј
 			{
 				if (i == ArrPoint[ArrPoint[i].parent].right) ArrPoint[ArrPoint[i].parent].right = -1;
 				else /*if (i == ArrPoint[ArrPoint[i].parent].left) */ArrPoint[ArrPoint[i].parent].left = -1;
 				ArrPoint.erase(ArrPoint.begin() + i);
 			}
 			else {
-				if (ArrPoint[i].left == -1) //нет левого потомка
+				if (ArrPoint[i].left == -1) //Г­ДєЕ€ Г«ДєГўГ®ДѓГ® ДЏГ®Е€Г®Д›Д™Е•
 				{
 					int j = ArrPoint[i].right;
 					ArrPoint[i].value = ArrPoint[j].value;
@@ -97,7 +97,7 @@ public:
 					ArrPoint.erase(ArrPoint.begin() + j);
 				}
 				else {
-					if (ArrPoint[i].right == -1) //нет правого
+					if (ArrPoint[i].right == -1) //Г­ДєЕ€ ДЏД‘Е•ГўГ®ДѓГ®
 					{
 						int j = ArrPoint[i].left;
 						ArrPoint[i].value = ArrPoint[j].value;
@@ -106,7 +106,7 @@ public:
 						ArrPoint[j].parent = i;
 						ArrPoint.erase(ArrPoint.begin() + j);
 					}
-					else //есть оба потомка
+					else //ДєЕ„Е€Гј Г®ГЎЕ• ДЏГ®Е€Г®Д›Д™Е•
 					{ 
 						int j = ArrPoint[i].right;
 						int k = ArrPoint[i].left;
@@ -153,16 +153,16 @@ public:
 		int indexvect = -1;
 		while (!exist)
 		{
-			if (element < ArrPoint[i].value) //проверка значения
+			if (element < ArrPoint[i].value) //ДЏД‘Г®ГўДєД‘Д™Е• Г§Г­Е•Г·ДєГ­ДЌЛ™
 			{
-				if (ArrPoint[i].value == element) //если равен узлу дерева
+				if (ArrPoint[i].value == element) //ДєЕ„Г«ДЌ Д‘Е•ГўДєГ­ ГіГ§Г«Гі Г¤ДєД‘ДєГўЕ•
 				{
-					indexvect = i; //нужный элемент
+					indexvect = i; //Г­ГіД‡Г­Е±Г© ГЅГ«ДєД›ДєГ­Е€
 					exist = true;
 				}
 				else {
-					if (ArrPoint[i].left == -1) exist = true; //не найден
-					else i = ArrPoint[i].left; //перейти в левый конец
+					if (ArrPoint[i].left == -1) exist = true; //Г­Дє Г­Е•Г©Г¤ДєГ­
+					else i = ArrPoint[i].left; //ДЏДєД‘ДєГ©Е€ДЌ Гў Г«ДєГўЕ±Г© Д™Г®Г­ДєГ¶
 				}
 			}
 			else
